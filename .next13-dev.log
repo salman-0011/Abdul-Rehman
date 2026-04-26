@@ -1,0 +1,7 @@
+nohup: ignoring input
+/bin/sh: 1: pnpm: not found
+  ▲ Next.js 13.5.6
+  - Local:        http://localhost:3000
+
+ ✓ Ready in 5.3s
+[?25h
