@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown, Github, Linkedin, Mail, ExternalLink, Menu, X } from "lucide-react"
 import { sendContactEmail } from "./actions/contact"
 import { defaultPortfolioContent, type PortfolioContent } from "@/lib/portfolio-content"
+import ProjectDetailCard from "@/components/ProjectDetailCard"
 
 export default function Portfolio() {
   const [currentSection, setCurrentSection] = useState(0)
@@ -280,7 +281,7 @@ export default function Portfolio() {
             transition={{ duration: 0.4 }}
             className="min-h-screen flex items-center justify-center px-8"
           >
-            <div className="max-w-6xl w-full">
+            <div className="max-w-4xl w-full">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -290,68 +291,12 @@ export default function Portfolio() {
                 Projects
               </motion.h2>
 
-              <div className="space-y-12">
-                {projects.map((project, index) => (
-                  <motion.div
-                    key={project.title}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 + index * 0.1, duration: 0.4 }}
-                    className="border-b border-gray-800 pb-8 hover:border-gray-600 transition-colors group cursor-pointer"
-                  >
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-2xl md:text-3xl font-light group-hover:text-gray-300 transition-colors">
-                            {project.title}
-                          </h3>
-                          <span className="text-xs px-2 py-1 bg-slate-800 border border-amber-500/30 rounded-full text-amber-300">
-                            {project.category}
-                          </span>
-                        </div>
-                        <p className="text-gray-400 mb-3">{project.description}</p>
-                        {project.impact && (
-                          <p className="text-sm text-teal-300 mb-4 font-medium">
-                            ✨ {project.impact}
-                          </p>
-                        )}
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {project.tech.map((tech) => (
-                            <span
-                              key={tech}
-                              className="text-xs border border-gray-700 px-2 py-1 text-gray-500 hover:border-gray-500 transition-colors"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="flex gap-4">
-                          {project.link && (
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sm text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1"
-                            >
-                              <ExternalLink size={14} />
-                              Live Demo
-                            </a>
-                          )}
-                          {project.github && (
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sm text-gray-400 hover:text-gray-300 transition-colors flex items-center gap-1"
-                            >
-                              <Github size={14} />
-                              GitHub
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
+              <div className="space-y-8">
+                {projects.map((project) => (
+                  <ProjectDetailCard
+                    key={project.id}
+                    project={project}
+                  />
                 ))}
               </div>
             </div>

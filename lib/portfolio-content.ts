@@ -5,13 +5,29 @@ export type PortfolioSection = {
   description: string
 }
 
-export type PortfolioProject = {
+export type ProjectDetailSection = {
   title: string
-  description: string
-  tech: string[]
-  link?: string
-  github?: string
+  content: string
+  images?: string[]
+  subsections?: {
+    title: string
+    content: string
+  }[]
+}
+
+export type PortfolioProject = {
+  id: string
+  title: string
+  tagline: string
+  cardImage: string
+  shortDescription: string
   category: string
+  year: string
+  overview: string
+  sections: ProjectDetailSection[]
+  achievements: string[]
+  myRole: string
+  tech: string[]
   impact?: string
 }
 
@@ -129,56 +145,108 @@ export const defaultPortfolioContent: PortfolioContent = {
   ],
   about: {
     headline:
-      "I'm Abdul Rehman, a Mechanical Engineering student focused on CAD, machine design, thermodynamics, and practical problem solving.",
+      "A highly motivated Mechanical Engineering student with a Diploma in Associate Engineering (Construction Machinery), possessing hands-on experience in electro-mechanical and hydraulic systems. Ranked among the Top 10 students at CTTI Islamabad and awarded the Punjab Education Authority Scholarship. Strong interest in Electric Vehicles, sustainable energy systems, and modern mechanical technologies. Seeking to pursue a Bachelor's degree.",
     skills: [
-      { title: "CAD & Design", skills: "AutoCAD, SolidWorks, 3D Modeling" },
-      { title: "Analysis & Simulation", skills: "ANSYS, FEA, Stress Analysis" },
-      { title: "Core Engineering", skills: "Thermodynamics, Strength of Materials, Machine Design" },
+      { title: "CAD & Design", skills: "SolidWorks, AutoCAD, 3D Modeling" },
+      { title: "Analysis & Simulation", skills: "ANSYS, FEA, Thermodynamics" },
+      { title: "Electro-Mechanical Systems", skills: "BLDC Motors, Battery Systems, Motor Controllers" },
     ],
   },
   projects: [
     {
-      title: "CAD of Mechanical Shaft Assembly",
-      description: "Modeled a shaft assembly with bearings, keyway, and dimensions for manufacturing readiness.",
-      tech: ["SolidWorks", "Assembly Modeling", "Technical Drawing"],
-      category: "CAD",
-      impact: "Improved drafting accuracy and part compatibility",
-    },
-    {
-      title: "Stress Analysis of Bracket",
-      description: "Performed static structural analysis to identify stress concentration and improve design reliability.",
-      tech: ["ANSYS", "FEA", "Solid Mechanics"],
-      category: "Simulation",
-      impact: "Reduced failure risk through design optimization",
-    },
-    {
-      title: "Heat Exchanger Design Study",
-      description: "Prepared a conceptual thermal design study focused on heat transfer and efficiency improvement.",
-      tech: ["Thermodynamics", "Heat Transfer", "Engineering Calculations"],
-      category: "Thermal Engineering",
-      impact: "Strengthened practical understanding of energy systems",
-    },
-    {
-      title: "Material Selection for Machine Components",
-      description: "Compared common engineering materials for strength, weight, cost, and manufacturability.",
-      tech: ["Materials Science", "Design Criteria", "Engineering Decision Making"],
-      category: "Mechanical Design",
-      impact: "Improved component selection for real-world use",
-    },
-    {
-      title: "Manufacturing Process Overview",
-      description: "Studied machining, casting, welding, and forming processes used in mechanical production.",
-      tech: ["Manufacturing", "Machining", "Workshop Practices"],
-      category: "Manufacturing",
-      impact: "Built understanding of practical production workflows",
-    },
-    {
-      title: "Solar Dryer Concept",
-      description: "Designed a low-cost solar drying concept for efficient drying of agricultural materials.",
-      tech: ["Renewable Energy", "Thermal Design", "Concept Development"],
-      category: "Energy Systems",
-      impact: "Explored sustainable engineering solutions",
-    },
+      id: "ev-project",
+      title: "Electric Vehicle (EV) Development",
+      tagline: "Budget-Friendly Eco-Friendly Electric Vehicle",
+      cardImage: "/assets/project1/introduction/introduction.webp",
+      shortDescription: "A high-performing, eco-friendly electric vehicle developed on a restricted $2,000 budget using strategic material selection and repurposed mechanical systems.",
+      category: "Electro-Mechanical Systems",
+      year: "2024",
+      overview: "This project demonstrates the feasibility of developing a high-performing, eco-friendly electric vehicle on a restricted budget. By utilizing strategic material selection and repurposed mechanical systems, we created a blueprint for accessible, low-cost green mobility.",
+      sections: [
+        {
+          title: "Introduction",
+          content: "Project overview and goals: build a high-performing, eco-friendly electric vehicle on a restricted budget using repurposed mechanical systems and strategic material selection.",
+          images: [
+            "/assets/project1/introduction/introduction.webp"
+          ]
+        },
+        {
+          title: "Chassis & Structural Design",
+          content: "Custom-fabricated framework using varied-gauge piping to balance structural rigidity with weight optimization. Includes mounting points for drivetrain, batteries, and suspension attachment.",
+          images: [
+            "/assets/project1/chassis/whatsapp-image-2026-05-02-at-11.38.16-am.webp",
+            "/assets/project1/chassis/whatsapp-image-2026-05-02-at-11.38.17-am.webp",
+            "/assets/project1/chassis/whatsapp-image-2026-05-02-at-11.38.17-am-1.webp",
+            "/assets/project1/chassis/whatsapp-image-2026-05-02-at-11.38.18-am.webp",
+            "/assets/project1/chassis/whatsapp-image-2026-05-02-at-11.38.18-am-1.webp"
+          ]
+        },
+        {
+          title: "Mechanical & Control Systems - Steering",
+          content: "Rack and pinion steering system implementation and linkage design for precise directional control.",
+          images: [
+            "/assets/project1/mechanical-and-control-systems-steering/whatsapp-image-2026-05-02-at-11.39.20-am.webp",
+            "/assets/project1/mechanical-and-control-systems-steering/whatsapp-image-2026-05-02-at-11.39.20-am-1.webp"
+          ]
+        },
+        {
+          title: "Suspension System",
+          content: "Heavy-duty leaf spring suspension designed for high load-bearing capacity and stability.",
+          images: [
+            "/assets/project1/suspension-system/whatsapp-image-2026-05-02-at-11.39.33-am.webp"
+          ]
+        },
+        {
+          title: "Battery Management System (BMS)",
+          content: "Integrated protection circuits to monitor battery health, cell balancing, and over-current protection.",
+          images: [
+            "/assets/project1/battery-management-system/whatsapp-image-2026-05-02-at-11.42.09-am.webp",
+            "/assets/project1/battery-management-system/whatsapp-image-2026-05-02-at-11.43.39-am.webp"
+          ]
+        },
+        {
+          title: "Electrical & Electronic Integration",
+          content: "Advanced systems for seamless power management and motor control including controllers, inverters, and wiring harnesses.",
+          images: [
+            "/assets/project1/electronic-and-electronic-integration-system/whatsapp-image-2026-05-02-at-11.53.38-am.webp"
+          ]
+        },
+        {
+          title: "Fabrication & Assembly",
+          content: "Hands-on assembly and fabrication work: welding, mounting, and aligning drivetrain and body panels.",
+          images: [
+            "/assets/project1/fabrication/whatsapp-image-2026-05-02-at-11.55.38-am.webp",
+            "/assets/project1/fabrication/whatsapp-image-2026-05-02-at-12.02.56-pm.webp",
+            "/assets/project1/fabrication/whatsapp-image-2026-05-02-at-12.02.57-pm.webp"
+          ]
+        },
+        {
+          title: "Final Vehicle & Outcomes",
+          content: "Final integration and testing results, demonstrating a working prototype with regenerative braking and energy-efficient systems.",
+          images: [
+            "/assets/project1/final-complete-vehicle/whatsapp-image-2026-05-02-at-12.02.55-pm.webp",
+            "/assets/project1/final-complete-vehicle/whatsapp-image-2026-05-02-at-12.02.54-pm.webp"
+          ]
+        },
+        {
+          title: "Challenges",
+          content: "Budget constraints, sourcing reliable components, and meeting safety and structural integrity requirements. Overcame these through careful sourcing, modular design, and rigorous testing.",
+          images: [
+            "/assets/project1/fabrication/whatsapp-image-2026-05-02-at-11.55.38-am.webp"
+          ]
+        }
+      ],
+      achievements: [
+        "Successfully proved functional EVs are achievable through practical engineering on a limited budget",
+        "Constructed robust vehicle body with high-strength steel for maximum safety",
+        "Integrated regenerative braking system extending driving range",
+        "Developed zero-emission transportation contributing to urban air quality improvement",
+        "Demonstrated innovative design approach combining theoretical research with hands-on technical execution"
+      ],
+      myRole: "As a key contributor to the Electric Vehicle project, I spearheaded the comprehensive research phase and conducted detailed cost-benefit analysis to ensure the prototype remained budget-friendly without compromising performance. I was responsible for developing the project roadmap and managing the completion timeline, ensuring all milestones were met through efficient resource allocation. Beyond project management, I provided hands-on technical assistance in mechanical assembly and systems integration, bridging the gap between theoretical research and practical engineering to deliver a functional, eco-friendly transportation solution.",
+      tech: ["SolidWorks", "CAD", "BLDC Motors", "Battery Management", "Motor Controllers", "Regenerative Braking", "Mechanical Assembly", "Cost Analysis"],
+      impact: "Demonstrated that high-performance electric vehicles are achievable on restricted budgets through strategic engineering and innovation."
+    }
   ],
   achievements: {
     competitions: [
