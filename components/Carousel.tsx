@@ -14,7 +14,7 @@ export default function Carousel({ images, onOpen }: CarouselProps) {
   const prev = () => setIndex((i) => (i - 1 + images.length) % images.length)
   const next = () => setIndex((i) => (i + 1) % images.length)
 
-  const handleImageClick = (e: React.MouseEvent) => {
+  const handleImageClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     e.stopPropagation()
     onOpen?.(images[index])

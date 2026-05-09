@@ -165,7 +165,7 @@ export default function Portfolio() {
                 transition={{ delay: 0.3, duration: 0.4 }}
                 className="mb-6 sm:mb-8"
               >
-                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-thin tracking-wider mb-3 sm:mb-4 leading-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.2]">
                   <motion.span
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -198,7 +198,7 @@ export default function Portfolio() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.4 }}
-                className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 font-light tracking-wide"
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-300 font-light tracking-wide leading-[1.8]"
               >
                 {intro.tagline}
               </motion.p>
@@ -236,7 +236,7 @@ export default function Portfolio() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.4 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-thin mb-6 sm:mb-8 tracking-wider text-amber-300"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-10 tracking-tight text-amber-300"
               >
                 About Me
               </motion.h2>
@@ -247,7 +247,7 @@ export default function Portfolio() {
                 transition={{ delay: 0.2, duration: 0.4 }}
                 className="space-y-6 sm:space-y-8"
               >
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-300 font-light leading-relaxed">
+                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-300 font-light leading-[1.9]">
                   {about.headline}
                 </p>
 
@@ -260,10 +260,10 @@ export default function Portfolio() {
                       transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
                       className="border border-slate-800 p-4 sm:p-5 md:p-6 hover:border-amber-500/50 transition-all duration-300 bg-slate-900/40 backdrop-blur-sm rounded"
                     >
-                      <h3 className="text-base sm:text-lg md:text-xl font-light mb-2 text-slate-100">
+                      <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 text-slate-100">
                         {skill.title}
                       </h3>
-                      <p className="text-gray-400 text-xs sm:text-sm">{skill.skills}</p>
+                      <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-[1.8]">{skill.skills}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -279,14 +279,14 @@ export default function Portfolio() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 0.4 }}
-            className="min-h-screen flex items-center justify-center px-8"
+            className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
           >
-            <div className="max-w-4xl w-full">
+            <div className="max-w-4xl w-full lg:pr-40 xl:pr-48">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.4 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-thin mb-8 sm:mb-12 lg:mb-16 text-center tracking-wider text-amber-300"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-10 sm:mb-14 lg:mb-18 text-center tracking-tight text-amber-300"
               >
                 Projects
               </motion.h2>
@@ -310,78 +310,60 @@ export default function Portfolio() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 0.4 }}
-            className="min-h-screen flex items-center justify-center px-8"
+            className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
           >
-            <div className="max-w-6xl w-full">
+            <div className="max-w-6xl w-full lg:pr-40 xl:pr-48">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.4 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-thin mb-8 sm:mb-12 lg:mb-16 text-center tracking-wider text-amber-300"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-10 sm:mb-14 lg:mb-18 text-center tracking-tight text-amber-300"
               >
-                Achievements
+                Skills & Certifications
               </motion.h2>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-                  {/* Project Highlights */}
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2, duration: 0.4 }}
                 >
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-light mb-6 sm:mb-8 text-amber-300">
-                    ⚙️ Project Highlights & Participation
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 sm:mb-10 text-amber-300">
+                    Mechanical Skill Areas
                   </h3>
 
                   <div className="space-y-4 sm:space-y-6">
-                    {achievements.competitions.map((competition, index) => (
+                    {achievements.skills.map((skillGroup, index) => (
                       <motion.div
-                        key={competition.title}
+                        key={skillGroup.title}
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                        className="bg-slate-900/40 backdrop-blur-sm border border-slate-700 p-4 sm:p-6 rounded-lg hover:border-amber-500/50 transition-all duration-300 group"
+                        className="bg-slate-900/40 backdrop-blur-sm border border-slate-700 p-4 sm:p-6 rounded-lg hover:border-amber-500/50 transition-all duration-300"
                       >
-                        <div className="flex items-start gap-3 sm:gap-4">
-                          <div className="text-2xl sm:text-3xl flex-shrink-0">{competition.icon}</div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-                              <h4 className="text-base sm:text-lg font-medium text-white group-hover:text-yellow-300 transition-colors">
-                                {competition.title}
-                              </h4>
-                              <span
-                                className={`text-xs px-2 py-1 rounded-full font-medium whitespace-nowrap ${
-                                  competition.type === "Winner"
-                                    ? "bg-amber-500/10 border border-amber-500/30 text-amber-300"
-                                    : "bg-teal-500/10 border border-teal-500/30 text-teal-300"
-                                }`}
-                              >
-                                {competition.type}
-                              </span>
-                            </div>
-                            <p className="text-gray-400 text-xs sm:text-sm mb-2">{competition.description}</p>
-                            <div className="flex flex-wrap gap-1 sm:gap-2 text-xs text-gray-500">
-                              <span>{competition.event}</span>
-                              <span>•</span>
-                              <span>{competition.organization}</span>
-                              <span>•</span>
-                              <span>{competition.year}</span>
-                            </div>
-                          </div>
-                        </div>
+                        <h4 className="text-base sm:text-lg md:text-xl font-bold text-white mb-4 sm:mb-5">
+                          {skillGroup.title}
+                        </h4>
+                        <ul className="space-y-3">
+                          {skillGroup.items.map((item) => (
+                            <li key={item} className="flex gap-3 text-slate-300 text-sm sm:text-base md:text-lg leading-[1.8]">
+                              <span className="text-amber-300 font-bold flex-shrink-0">•</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </motion.div>
                     ))}
                   </div>
                 </motion.div>
 
-                {/* Certifications */}
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.25, duration: 0.4 }}
                 >
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-light mb-6 sm:mb-8 text-slate-100">
-                    📜 Technical Certifications
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 sm:mb-10 text-slate-100">
+                    Certification
                   </h3>
 
                   <div className="space-y-4 sm:space-y-6">
@@ -405,24 +387,27 @@ export default function Portfolio() {
                             </svg>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="text-base sm:text-lg font-medium text-white group-hover:text-blue-300 transition-colors mb-2">
+                            <h4 className="text-base sm:text-lg md:text-xl font-semibold text-white group-hover:text-teal-300 transition-colors mb-2">
                               {cert.title}
                             </h4>
-                            <p className="text-gray-400 text-xs sm:text-sm mb-3">{cert.provider}</p>
-                            <div className="flex flex-wrap gap-2 mb-3">
+                            <p className="text-gray-400 text-sm sm:text-base mb-3">{cert.provider}</p>
+                            <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm text-gray-500 mb-4">
+                              <span>Issued: {cert.date}</span>
+                              <span>•</span>
+                              <span>{cert.mode}</span>
+                            </div>
+                            <p className="text-slate-300 text-sm sm:text-base leading-[1.8] mb-4">
+                              {cert.description}
+                            </p>
+                            <div className="flex flex-wrap gap-2">
                               {cert.skills.map((skill) => (
                                 <span
                                   key={skill}
-                                  className="text-xs bg-slate-800 border border-teal-500/30 px-2 py-1 rounded-full text-teal-300"
+                                  className="text-xs sm:text-sm bg-slate-800 border border-teal-500/30 px-3 py-1.5 rounded-full text-teal-300"
                                 >
                                   {skill}
                                 </span>
                               ))}
-                            </div>
-                            <div className="flex flex-wrap gap-1 sm:gap-2 text-xs text-gray-500">
-                              <span>ID: {cert.credentialId}</span>
-                              <span>•</span>
-                              <span>{cert.year}</span>
                             </div>
                           </div>
                         </div>
@@ -431,35 +416,6 @@ export default function Portfolio() {
                   </div>
                 </motion.div>
               </div>
-
-              {/* Achievement Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.4 }}
-                className="text-center mt-12 sm:mt-16"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                  <div className="bg-slate-900/40 backdrop-blur-sm border border-slate-700 p-4 sm:p-6 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-amber-300 mb-2">
-                      {contact.stats.competitionWins}
-                    </div>
-                    <p className="text-gray-400 text-sm sm:text-base">Participations</p>
-                  </div>
-                  <div className="bg-slate-900/40 backdrop-blur-sm border border-slate-700 p-4 sm:p-6 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-teal-300 mb-2">
-                      {contact.stats.certificationsCount}
-                    </div>
-                    <p className="text-gray-400 text-sm sm:text-base">Technical Certifications</p>
-                  </div>
-                  <div className="bg-slate-900/40 backdrop-blur-sm border border-slate-700 p-4 sm:p-6 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">
-                      {contact.stats.cgpa}
-                    </div>
-                    <p className="text-gray-400 text-sm sm:text-base">CGPA</p>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </motion.section>
         )}
@@ -477,7 +433,7 @@ export default function Portfolio() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.4 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-thin mb-8 sm:mb-12 lg:mb-16 text-center tracking-wider text-amber-300"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-10 sm:mb-14 lg:mb-18 text-center tracking-tight text-amber-300"
               >
                 Let's Connect
               </motion.h2>
@@ -490,10 +446,10 @@ export default function Portfolio() {
                   className="space-y-4 sm:space-y-6 lg:space-y-8"
                 >
                   <div>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-light mb-4 sm:mb-6 text-slate-100">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-slate-100">
                       Get In Touch
                     </h3>
-                    <p className="text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
+                    <p className="text-gray-400 text-base sm:text-lg md:text-xl leading-[1.9] mb-8 sm:mb-10">
                       {contact.description}
                     </p>
                   </div>
@@ -524,8 +480,8 @@ export default function Portfolio() {
                         </svg>
                       </div>
                       <div className="min-w-0">
-                        <h4 className="text-white font-medium text-sm sm:text-base">Location</h4>
-                        <p className="text-gray-400 text-xs sm:text-sm truncate">{contact.location}</p>
+                        <h4 className="text-white font-semibold text-base sm:text-lg">Location</h4>
+                        <p className="text-gray-400 text-sm sm:text-base truncate">{contact.location}</p>
                       </div>
                     </motion.div>
 
@@ -542,12 +498,12 @@ export default function Portfolio() {
                         </svg>
                       </div>
                       <div className="min-w-0">
-                        <h4 className="text-white font-medium text-sm sm:text-base">WhatsApp</h4>
+                        <h4 className="text-white font-semibold text-base sm:text-lg">WhatsApp</h4>
                         <a
                           href={contact.whatsappLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-green-400 transition-colors text-xs sm:text-sm truncate"
+                          className="text-gray-400 hover:text-green-400 transition-colors text-sm sm:text-base truncate"
                         >
                           {contact.whatsappNumber}
                         </a>
@@ -565,10 +521,10 @@ export default function Portfolio() {
                         <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
                       <div className="min-w-0">
-                        <h4 className="text-white font-medium text-sm sm:text-base">Email</h4>
+                        <h4 className="text-white font-semibold text-base sm:text-lg">Email</h4>
                         <a
                           href={`mailto:${contact.email}`}
-                          className="text-gray-400 hover:text-purple-400 transition-colors text-xs sm:text-sm truncate break-all"
+                          className="text-gray-400 hover:text-purple-400 transition-colors text-sm sm:text-base truncate break-all"
                         >
                           {contact.email}
                         </a>
@@ -583,7 +539,7 @@ export default function Portfolio() {
                     transition={{ delay: 0.45, duration: 0.4 }}
                     className="pt-4 sm:pt-6 lg:pt-8"
                   >
-                    <h4 className="text-base sm:text-lg font-medium mb-3 sm:mb-4 text-gray-300">Connect With Me</h4>
+                    <h4 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-5 text-gray-300">Connect With Me</h4>
                     <div className="flex gap-3 sm:gap-4">
                       {contact.socialLinks.map((social, index) => {
                         const visual = getSocialVisual(social.label)

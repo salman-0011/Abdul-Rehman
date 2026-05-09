@@ -41,11 +41,17 @@ export type PortfolioCompetition = {
   icon: string
 }
 
+export type SkillCategory = {
+  title: string
+  items: string[]
+}
+
 export type PortfolioCertification = {
   title: string
   provider: string
-  credentialId: string
-  year: string
+  date: string
+  mode: string
+  description: string
   skills: string[]
 }
 
@@ -83,7 +89,7 @@ export type PortfolioContent = {
   }
   projects: PortfolioProject[]
   achievements: {
-    competitions: PortfolioCompetition[]
+    skills: SkillCategory[]
     certifications: PortfolioCertification[]
   }
   testimonials: PortfolioTestimonial[]
@@ -132,9 +138,9 @@ export const defaultPortfolioContent: PortfolioContent = {
     },
     {
       id: "achievements",
-      title: "Achievements",
+      title: "Skills & Certifications",
       subtitle: "Skills & Certifications",
-      description: "Progress in design, simulation, and technical learning",
+      description: "Mechanical workshop skills, safety practices, and training certificates",
     },
     {
       id: "contact",
@@ -147,9 +153,26 @@ export const defaultPortfolioContent: PortfolioContent = {
     headline:
       "A highly motivated Mechanical Engineering student with a Diploma in Associate Engineering (Construction Machinery), possessing hands-on experience in electro-mechanical and hydraulic systems. Ranked among the Top 10 students at CTTI Islamabad and awarded the Punjab Education Authority Scholarship. Strong interest in Electric Vehicles, sustainable energy systems, and modern mechanical technologies. Seeking to pursue a Bachelor's degree.",
     skills: [
-      { title: "CAD & Design", skills: "SolidWorks, AutoCAD, 3D Modeling" },
-      { title: "Analysis & Simulation", skills: "ANSYS, FEA, Thermodynamics" },
-      { title: "Electro-Mechanical Systems", skills: "BLDC Motors, Battery Systems, Motor Controllers" },
+      {
+        title: "Mechanical & Technical",
+        skills:
+          "Hydraulic system diagnostics and troubleshooting / Mechanical system assembly and disassembly / Preventive maintenance of workshop equipment / Basic understanding of heavy construction machinery",
+      },
+      {
+        title: "Safety & Compliance",
+        skills:
+          "Health and safety management practices / Proper use of Personal Protective Equipment (PPE) / Risk assessment in workshop environments",
+      },
+      {
+        title: "Digital & Administrative",
+        skills:
+          "Teamwork / Microsoft Office (Word, Excel, PowerPoint) / Basic project planning and documentation / Project time management",
+      },
+      {
+        title: "Workshop Equipment & Tools",
+        skills:
+          "Workshop machines: lathe, drill, and milling machine / Reading manuals of machines and equipment / Vernier caliper, screw gauge, inside caliper, and outside caliper / Workshop equipment calibration",
+      },
     ],
   },
   projects: [
@@ -249,77 +272,51 @@ export const defaultPortfolioContent: PortfolioContent = {
     }
   ],
   achievements: {
-    competitions: [
+    skills: [
       {
-        title: "Mechanical Design Project Presentation",
-        event: "Department Technical Showcase",
-        organization: "Engineering Department",
-        year: "2024",
-        type: "Participant",
-        description: "Presented a mechanical design project with CAD and analysis work",
-        icon: "⚙️",
+        title: "Mechanical & Technical",
+        items: [
+          "Hydraulic system diagnostics and troubleshooting",
+          "Mechanical system assembly and disassembly",
+          "Preventive maintenance of workshop equipment",
+          "Basic understanding of heavy construction machinery",
+        ],
       },
       {
-        title: "Engineering Workshop Challenge",
-        event: "Hands-on Fabrication Task",
-        organization: "College Workshop",
-        year: "2024",
-        type: "Participant",
-        description: "Worked on practical fabrication and measurement exercises",
-        icon: "🛠️",
+        title: "Safety & Compliance",
+        items: [
+          "Health and safety management practices",
+          "Proper use of Personal Protective Equipment (PPE)",
+          "Risk assessment in workshop environments",
+        ],
       },
       {
-        title: "Thermodynamics Problem Solving",
-        event: "Classroom Technical Contest",
-        organization: "Mechanical Engineering Faculty",
-        year: "2024",
-        type: "Participant",
-        description: "Solved engineering problems under time constraints",
-        icon: "📐",
+        title: "Digital & Administrative",
+        items: [
+          "Teamwork",
+          "Microsoft Office (Word, Excel, PowerPoint)",
+          "Basic project planning and documentation",
+          "Project time management",
+        ],
+      },
+      {
+        title: "Workshop Equipment & Tools Used",
+        items: [
+          "Workshop machines including lathe machine, drill machine and milling machine",
+          "Reading manuals of machines and equipment",
+          "Used workshop tools such as vernier caliper, screw gauge, inside caliper and outside caliper",
+          "Workshop equipment calibration",
+        ],
       },
     ],
     certifications: [
       {
-        title: "SolidWorks Basics",
-        provider: "CAD Learning Platform",
-        credentialId: "MECH-SW-001",
-        year: "2024",
-        skills: ["3D Modeling", "Assembly", "Drafting"],
-      },
-      {
-        title: "AutoCAD Fundamentals",
-        provider: "Technical Training Program",
-        credentialId: "MECH-AC-002",
-        year: "2024",
-        skills: ["2D Drafting", "Dimensioning", "Technical Drawing"],
-      },
-      {
-        title: "ANSYS Introduction",
-        provider: "Engineering Simulation Course",
-        credentialId: "MECH-AN-003",
-        year: "2024",
-        skills: ["FEA", "Stress Analysis", "Simulation"],
-      },
-      {
-        title: "Manufacturing Processes",
-        provider: "Workshop Training",
-        credentialId: "MECH-MP-004",
-        year: "2024",
-        skills: ["Machining", "Welding", "Casting"],
-      },
-      {
-        title: "Thermodynamics Essentials",
-        provider: "Mechanical Engineering Course",
-        credentialId: "MECH-TH-005",
-        year: "2024",
-        skills: ["Heat Transfer", "Energy Systems", "Cycles"],
-      },
-      {
-        title: "Strength of Materials",
-        provider: "Mechanical Engineering Course",
-        credentialId: "MECH-SM-006",
-        year: "2024",
-        skills: ["Stress", "Strain", "Load Analysis"],
+        title: "Oil & Gas Drilling",
+        provider: "National Technical Training Council (NTTC)",
+        date: "02/11/2023",
+        mode: "Online",
+        description: "Learned drilling systems, tools, and operational procedures, and gained foundational knowledge of oil and gas industry practices.",
+        skills: ["Drilling systems", "Tools and operational procedures", "Oil & gas industry basics"],
       },
     ],
   },
@@ -336,9 +333,9 @@ export const defaultPortfolioContent: PortfolioContent = {
       { label: "Portfolio", href: "https://example.com" },
     ],
     stats: {
-      competitionWins: "3",
-      certificationsCount: "6",
-      cgpa: "90%",
+      competitionWins: "4",
+      certificationsCount: "1",
+      cgpa: "Hands-on",
     },
     resumePath: "/resume.pdf",
     resumeFileName: "Abdul_Rehman_Resume.pdf",
@@ -366,10 +363,10 @@ export function normalizePortfolioContent(raw: unknown): PortfolioContent {
     },
     projects: Array.isArray(source.projects) && source.projects.length ? source.projects : defaultPortfolioContent.projects,
     achievements: {
-      competitions:
-        Array.isArray(source.achievements?.competitions) && source.achievements.competitions.length
-          ? source.achievements.competitions
-          : defaultPortfolioContent.achievements.competitions,
+      skills:
+        Array.isArray(source.achievements?.skills) && source.achievements.skills.length
+          ? source.achievements.skills
+          : defaultPortfolioContent.achievements.skills,
       certifications:
         Array.isArray(source.achievements?.certifications) && source.achievements.certifications.length
           ? source.achievements.certifications
