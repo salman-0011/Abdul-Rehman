@@ -44,6 +44,7 @@ export type PortfolioCompetition = {
 export type SkillCategory = {
   title: string
   items: string[]
+  howLearned: string
 }
 
 export type PortfolioCertification = {
@@ -81,6 +82,8 @@ export type PortfolioContent = {
     greetingMiddle: string
     greetingName: string
     tagline: string
+    profileImage: string
+    bannerImage?: string
   }
   sections: PortfolioSection[]
   about: {
@@ -91,6 +94,7 @@ export type PortfolioContent = {
   achievements: {
     skills: SkillCategory[]
     certifications: PortfolioCertification[]
+    keyStrengths: string[]
   }
   testimonials: PortfolioTestimonial[]
   contact: {
@@ -116,6 +120,7 @@ export const defaultPortfolioContent: PortfolioContent = {
     greetingMiddle: "I'm",
     greetingName: "Abdul Rehman",
     tagline: "Designing Practical Mechanical Solutions",
+    profileImage: "/assets/profile/1777138741631~2 (1).png",
   },
   sections: [
     {
@@ -138,9 +143,9 @@ export const defaultPortfolioContent: PortfolioContent = {
     },
     {
       id: "achievements",
-      title: "Skills & Certifications",
-      subtitle: "Skills & Certifications",
-      description: "Mechanical workshop skills, safety practices, and training certificates",
+      title: "Technical Skills & Expertise",
+      subtitle: "Technical Skills & Expertise",
+      description: "Mechanical, practical, and supporting engineering capabilities with strengths and certification",
     },
     {
       id: "contact",
@@ -274,39 +279,80 @@ export const defaultPortfolioContent: PortfolioContent = {
   achievements: {
     skills: [
       {
-        title: "Mechanical & Technical",
+        title: "⚙️ Mechanical & Engineering Systems",
         items: [
-          "Hydraulic system diagnostics and troubleshooting",
-          "Mechanical system assembly and disassembly",
-          "Preventive maintenance of workshop equipment",
-          "Basic understanding of heavy construction machinery",
+          "IC engine systems and diagnostics",
+          "Fuel systems and combustion principles",
+          "Transmission and powertrain systems",
+          "Steering and braking systems",
         ],
+        howLearned: "Studied through DAE coursework (IC Engine, Fuel System, Transmission)",
       },
       {
-        title: "Safety & Compliance",
+        title: "🚜 Hydraulic & Construction Machinery",
         items: [
-          "Health and safety management practices",
-          "Proper use of Personal Protective Equipment (PPE)",
-          "Risk assessment in workshop environments",
+          "Hydraulic system operation and basics",
+          "Excavator working principles",
+          "Construction machinery operations",
+          "Equipment maintenance fundamentals",
         ],
+        howLearned: "Subjects: Hydraulic Systems, Excavator, Construction Machinery",
       },
       {
-        title: "Digital & Administrative",
+        title: "🔧 Workshop & Practical Experience",
         items: [
-          "Teamwork",
-          "Microsoft Office (Word, Excel, PowerPoint)",
-          "Basic project planning and documentation",
-          "Project time management",
+          "Mechanical assembly & disassembly",
+          "Use of workshop tools",
+          "Machine shop practices",
+          "Equipment handling",
         ],
+        howLearned: "Workshop Practice 1 & 2",
       },
       {
-        title: "Workshop Equipment & Tools Used",
+        title: "📐 Engineering Drawing & Design",
         items: [
-          "Workshop machines including lathe machine, drill machine and milling machine",
-          "Reading manuals of machines and equipment",
-          "Used workshop tools such as vernier caliper, screw gauge, inside caliper and outside caliper",
-          "Workshop equipment calibration",
+          "Basic engineering drawing",
+          "Reading mechanical diagrams",
+          "Component visualization",
         ],
+        howLearned: "Engineering Drawing subject",
+      },
+      {
+        title: "🔥 Thermodynamics & Energy Systems",
+        items: [
+          "Heat and energy transfer basics",
+          "Engine efficiency concepts",
+          "Energy conversion systems",
+        ],
+        howLearned: "Thermodynamics + IC Engine",
+      },
+      {
+        title: "⚠️ Safety & Compliance",
+        items: [
+          "OH&SE standards",
+          "Risk assessment",
+          "PPE usage",
+          "Safe workshop practices",
+        ],
+        howLearned: "OH&SE subject + workshop",
+      },
+      {
+        title: "🧠 Problem Solving & Analysis",
+        items: [
+          "Fault diagnosis in engines",
+          "Mechanical troubleshooting",
+          "Analytical thinking",
+        ],
+        howLearned: "Problems in IC Engine",
+      },
+      {
+        title: "💻 Digital & Supporting Skills",
+        items: [
+          "Microsoft Word, Excel, PowerPoint",
+          "Technical documentation",
+          "Basic project planning",
+        ],
+        howLearned: "Academic projects and documentation tasks",
       },
     ],
     certifications: [
@@ -318,6 +364,12 @@ export const defaultPortfolioContent: PortfolioContent = {
         description: "Learned drilling systems, tools, and operational procedures, and gained foundational knowledge of oil and gas industry practices.",
         skills: ["Drilling systems", "Tools and operational procedures", "Oil & gas industry basics"],
       },
+    ],
+    keyStrengths: [
+      "Strong foundation in mechanical and construction machinery systems",
+      "Hands-on workshop experience",
+      "Interest in Electric Vehicles and sustainable technologies",
+      "Alignment with modern engineering and infrastructure development",
     ],
   },
   testimonials: [],
@@ -362,16 +414,6 @@ export function normalizePortfolioContent(raw: unknown): PortfolioContent {
           : defaultPortfolioContent.about.skills,
     },
     projects: Array.isArray(source.projects) && source.projects.length ? source.projects : defaultPortfolioContent.projects,
-    achievements: {
-      skills:
-        Array.isArray(source.achievements?.skills) && source.achievements.skills.length
-          ? source.achievements.skills
-          : defaultPortfolioContent.achievements.skills,
-      certifications:
-        Array.isArray(source.achievements?.certifications) && source.achievements.certifications.length
-          ? source.achievements.certifications
-          : defaultPortfolioContent.achievements.certifications,
-    },
     testimonials: Array.isArray(source.testimonials) ? source.testimonials : [],
     contact: {
       ...defaultPortfolioContent.contact,
@@ -384,6 +426,22 @@ export function normalizePortfolioContent(raw: unknown): PortfolioContent {
         ...defaultPortfolioContent.contact.stats,
         ...(source.contact?.stats ?? {}),
       },
+    },
+    achievements: {
+      ...defaultPortfolioContent.achievements,
+      ...(source.achievements ?? {}),
+      skills:
+        Array.isArray(source.achievements?.skills) && source.achievements.skills.length
+          ? source.achievements.skills
+          : defaultPortfolioContent.achievements.skills,
+      certifications:
+        Array.isArray(source.achievements?.certifications) && source.achievements.certifications.length
+          ? source.achievements.certifications
+          : defaultPortfolioContent.achievements.certifications,
+      keyStrengths:
+        Array.isArray(source.achievements?.keyStrengths) && source.achievements.keyStrengths.length
+          ? source.achievements.keyStrengths
+          : defaultPortfolioContent.achievements.keyStrengths,
     },
   }
 }

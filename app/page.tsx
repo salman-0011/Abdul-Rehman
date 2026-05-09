@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown, Github, Linkedin, Mail, ExternalLink, Menu, X } from "lucide-react"
+import Image from "next/image"
 import { sendContactEmail } from "./actions/contact"
 import { defaultPortfolioContent, type PortfolioContent } from "@/lib/portfolio-content"
 import ProjectDetailCard from "@/components/ProjectDetailCard"
@@ -158,50 +159,105 @@ export default function Portfolio() {
             transition={{ duration: 0.4 }}
             className="min-h-screen flex items-center justify-center relative"
           >
-            <div className="text-center px-4 sm:px-6">
+            <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-                className="mb-6 sm:mb-8"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.45 }}
+                className="relative overflow-hidden rounded-3xl border border-slate-700 bg-slate-900/60 shadow-2xl mb-8 sm:mb-10"
               >
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.2]">
-                  <motion.span
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2, duration: 0.4 }}
-                  >
-                    {intro.greetingTop}
-                  </motion.span>
-                  <br />
-                  <motion.span
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3, duration: 0.4 }}
-                    className="text-amber-300"
-                  >
-                    {intro.greetingMiddle}
-                  </motion.span>
-                  <br />
-                  <motion.span
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4, duration: 0.4 }}
-                    className="text-slate-200"
-                  >
-                    {intro.greetingName}
-                  </motion.span>
-                </h1>
+                <div className="relative min-h-[280px] sm:min-h-[340px] lg:min-h-[420px]">
+                  {intro.bannerImage ? (
+                    <Image
+                      src={intro.bannerImage}
+                      alt="Banner background"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent" />
+                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-500 via-teal-400 to-blue-500" />
+
+                  <div className="absolute left-4 top-4 sm:left-6 sm:top-6">
+                    <span className="inline-flex items-center rounded-full border border-amber-400/40 bg-slate-950/60 px-3 py-1 text-xs sm:text-sm text-amber-200 backdrop-blur-sm">
+                      Mechanical Engineering Student
+                    </span>
+                  </div>
+
+                  <div className="absolute inset-x-0 bottom-4 sm:bottom-6 flex items-end gap-4 sm:gap-6 px-4 sm:px-6">
+                    <div className="relative h-20 w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32 overflow-hidden rounded-full border-4 border-slate-950 bg-slate-800 shadow-xl shrink-0">
+                      <Image
+                        src={intro.profileImage}
+                        alt="Abdul Rehman profile photo"
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    </div>
+
+                    <div className="max-w-3xl pb-1 sm:pb-2">
+                      <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-slate-300/80 mb-2">
+                        Profile
+                      </p>
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
+                        {intro.greetingName}
+                      </h2>
+                      <p className="text-sm sm:text-base lg:text-lg text-slate-200/90 leading-relaxed mt-2 max-w-2xl">
+                        {intro.tagline}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.4 }}
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-300 font-light tracking-wide leading-[1.8]"
-              >
-                {intro.tagline}
-              </motion.p>
+              <div className="text-center max-w-4xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.35, duration: 0.4 }}
+                  className="mb-6 sm:mb-8"
+                >
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.2]">
+                    <motion.span
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2, duration: 0.4 }}
+                    >
+                      {intro.greetingTop}
+                    </motion.span>
+                    <br />
+                    <motion.span
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3, duration: 0.4 }}
+                      className="text-amber-300"
+                    >
+                      {intro.greetingMiddle}
+                    </motion.span>
+                    <br />
+                    <motion.span
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4, duration: 0.4 }}
+                      className="text-slate-200"
+                    >
+                      {intro.greetingName}
+                    </motion.span>
+                  </h1>
+                </motion.div>
+
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.55, duration: 0.4 }}
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-300 font-light tracking-wide leading-[1.8]"
+                >
+                  {intro.tagline}
+                </motion.p>
+              </div>
             </div>
 
             <motion.div
@@ -231,7 +287,7 @@ export default function Portfolio() {
             transition={{ duration: 0.4 }}
             className="min-h-screen flex items-center justify-center px-8"
           >
-            <div className="max-w-4xl text-center px-4 sm:px-6">
+            <div className="max-w-5xl text-center px-4 sm:px-6">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -245,28 +301,15 @@ export default function Portfolio() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.4 }}
-                className="space-y-6 sm:space-y-8"
+                className="space-y-6 sm:space-y-8 mx-auto"
               >
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-300 font-light leading-[1.9]">
-                  {about.headline}
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 leading-[1.9] max-w-4xl mx-auto">
+                  My practical interests focus on mechanical and engineering systems, hydraulic and construction machinery, workshop practice, engineering drawing, thermodynamics, safety compliance, problem solving, and digital support tools.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mt-8 sm:mt-12">
-                  {about.skills.map((skill, index) => (
-                    <motion.div
-                      key={skill.title}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                      className="border border-slate-800 p-4 sm:p-5 md:p-6 hover:border-amber-500/50 transition-all duration-300 bg-slate-900/40 backdrop-blur-sm rounded"
-                    >
-                      <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 text-slate-100">
-                        {skill.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-[1.8]">{skill.skills}</p>
-                    </motion.div>
-                  ))}
-                </div>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 leading-[1.9] max-w-4xl mx-auto">
+                  Through DAE coursework, workshop practice, and project-based learning, I have built a strong foundation in technical analysis, hands-on fabrication, and reliable engineering execution.
+                </p>
               </motion.div>
             </div>
           </motion.section>
@@ -319,103 +362,130 @@ export default function Portfolio() {
                 transition={{ delay: 0.1, duration: 0.4 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-10 sm:mb-14 lg:mb-18 text-center tracking-tight text-amber-300"
               >
-                Skills & Certifications
+                Technical Skills & Expertise
               </motion.h2>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2, duration: 0.4 }}
-                >
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 sm:mb-10 text-amber-300">
-                    Mechanical Skill Areas
-                  </h3>
+              <p className="text-center max-w-4xl mx-auto text-slate-300 text-base sm:text-lg md:text-xl leading-[1.9] mb-10 sm:mb-12 lg:mb-16">
+                A refined overview of the mechanical, practical, and supporting engineering abilities I have built through coursework, workshop practice, and project work.
+              </p>
 
-                  <div className="space-y-4 sm:space-y-6">
-                    {achievements.skills.map((skillGroup, index) => (
+              <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 items-start">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
+                  className="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6"
+                >
+                  {achievements.skills.map((skillGroup, index) => {
+                    const cardStyles = [
+                      "from-amber-500/20 via-slate-900/80 to-slate-900 border-amber-500/30",
+                      "from-teal-500/20 via-slate-900/80 to-slate-900 border-teal-500/30",
+                      "from-blue-500/20 via-slate-900/80 to-slate-900 border-blue-500/30",
+                      "from-purple-500/20 via-slate-900/80 to-slate-900 border-purple-500/30",
+                      "from-emerald-500/20 via-slate-900/80 to-slate-900 border-emerald-500/30",
+                      "from-rose-500/20 via-slate-900/80 to-slate-900 border-rose-500/30",
+                      "from-cyan-500/20 via-slate-900/80 to-slate-900 border-cyan-500/30",
+                      "from-orange-500/20 via-slate-900/80 to-slate-900 border-orange-500/30",
+                    ]
+                    const style = cardStyles[index % cardStyles.length]
+
+                    return (
                       <motion.div
                         key={skillGroup.title}
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                        className="bg-slate-900/40 backdrop-blur-sm border border-slate-700 p-4 sm:p-6 rounded-lg hover:border-amber-500/50 transition-all duration-300"
+                        transition={{ delay: 0.25 + index * 0.06, duration: 0.4 }}
+                        className={`relative overflow-hidden rounded-3xl border bg-gradient-to-br ${style} shadow-xl`}
                       >
-                        <h4 className="text-base sm:text-lg md:text-xl font-bold text-white mb-4 sm:mb-5">
-                          {skillGroup.title}
-                        </h4>
-                        <ul className="space-y-3">
-                          {skillGroup.items.map((item) => (
-                            <li key={item} className="flex gap-3 text-slate-300 text-sm sm:text-base md:text-lg leading-[1.8]">
-                              <span className="text-amber-300 font-bold flex-shrink-0">•</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.25, duration: 0.4 }}
-                >
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 sm:mb-10 text-slate-100">
-                    Certification
-                  </h3>
-
-                  <div className="space-y-4 sm:space-y-6">
-                    {achievements.certifications.map((cert, index) => (
-                      <motion.div
-                        key={cert.title}
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.35 + index * 0.05, duration: 0.4 }}
-                        className="bg-slate-900/40 backdrop-blur-sm border border-slate-700 p-4 sm:p-6 rounded-lg hover:border-teal-500/50 transition-all duration-300 group"
-                      >
-                        <div className="flex items-start gap-3 sm:gap-4">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-800 rounded-full flex items-center justify-center flex-shrink-0 border border-slate-700">
-                            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                              />
-                            </svg>
+                        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-white/40 via-white/10 to-transparent" />
+                        <div className="p-5 sm:p-6 lg:p-7">
+                          <div className="flex items-start justify-between gap-4 mb-4">
+                            <div>
+                              <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-slate-400 mb-2">
+                                Skill Domain {String(index + 1).padStart(2, "0")}
+                              </p>
+                              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white leading-tight">
+                                {skillGroup.title}
+                              </h3>
+                            </div>
+                            <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-amber-300 font-bold text-sm sm:text-base">
+                              {index + 1}
+                            </div>
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="text-base sm:text-lg md:text-xl font-semibold text-white group-hover:text-teal-300 transition-colors mb-2">
-                              {cert.title}
-                            </h4>
-                            <p className="text-gray-400 text-sm sm:text-base mb-3">{cert.provider}</p>
-                            <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm text-gray-500 mb-4">
-                              <span>Issued: {cert.date}</span>
-                              <span>•</span>
-                              <span>{cert.mode}</span>
-                            </div>
-                            <p className="text-slate-300 text-sm sm:text-base leading-[1.8] mb-4">
-                              {cert.description}
+
+                          <ul className="space-y-3">
+                            {skillGroup.items.map((item) => (
+                              <li key={item} className="flex gap-3 text-slate-200 text-sm sm:text-base leading-[1.85]">
+                                <span className="mt-1 h-2 w-2 rounded-full bg-amber-300 flex-shrink-0" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <div className="mt-5 pt-4 border-t border-white/10">
+                            <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] text-slate-400 mb-2">
+                              How I Learned
                             </p>
-                            <div className="flex flex-wrap gap-2">
-                              {cert.skills.map((skill) => (
-                                <span
-                                  key={skill}
-                                  className="text-xs sm:text-sm bg-slate-800 border border-teal-500/30 px-3 py-1.5 rounded-full text-teal-300"
-                                >
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
+                            <p className="text-slate-300 text-sm sm:text-base leading-[1.8]">
+                              {skillGroup.howLearned}
+                            </p>
                           </div>
                         </div>
                       </motion.div>
-                    ))}
-                  </div>
+                    )
+                  })}
                 </motion.div>
+
+                <div className="space-y-6 sm:space-y-7 xl:sticky xl:top-24">
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.25, duration: 0.4 }}
+                    className="rounded-3xl border border-amber-500/30 bg-gradient-to-br from-amber-500/15 via-slate-900/80 to-slate-950 p-5 sm:p-6 lg:p-7 shadow-2xl"
+                  >
+                    <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-amber-200 mb-3">
+                      Core Strengths
+                    </p>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">
+                      What defines my engineering approach
+                    </h3>
+                    <ul className="space-y-3">
+                      {achievements.keyStrengths.map((strength) => (
+                        <li key={strength} className="flex gap-3 text-slate-200 text-sm sm:text-base leading-[1.8]">
+                          <span className="text-amber-300 font-bold flex-shrink-0">•</span>
+                          <span>{strength}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.35, duration: 0.4 }}
+                    className="rounded-3xl border border-slate-700 bg-slate-900/50 p-5 sm:p-6 lg:p-7 shadow-xl"
+                  >
+                    <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-slate-400 mb-3">
+                      Certification
+                    </p>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-amber-300 mb-2">
+                      {achievements.certifications[0]?.title}
+                    </h3>
+                    <p className="text-slate-300 text-sm sm:text-base leading-[1.8] mb-3">
+                      {achievements.certifications[0]?.provider}
+                    </p>
+                    <div className="flex flex-wrap gap-2 text-xs sm:text-sm text-slate-400 mb-4">
+                      <span>Issued: {achievements.certifications[0]?.date}</span>
+                      <span>•</span>
+                      <span>{achievements.certifications[0]?.mode}</span>
+                    </div>
+                    <p className="text-slate-300 text-sm sm:text-base leading-[1.8]">
+                      {achievements.certifications[0]?.description}
+                    </p>
+                  </motion.div>
+                </div>
               </div>
+
             </div>
           </motion.section>
         )}
