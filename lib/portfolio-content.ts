@@ -381,7 +381,7 @@ export const defaultPortfolioContent: PortfolioContent = {
     whatsappLink: "https://wa.me/923184551051",
     email: "abdulrehman5596@gmail.com",
     socialLinks: [
-      { label: "LinkedIn", href: "https://www.linkedin.com" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/abdul-rehman-ch599695759" },
       { label: "Portfolio", href: "https://example.com" },
     ],
     stats: {
