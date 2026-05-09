@@ -156,7 +156,7 @@ export const defaultPortfolioContent: PortfolioContent = {
   ],
   about: {
     headline:
-      "A highly motivated Mechanical Engineering student with a Diploma in Associate Engineering (Construction Machinery), possessing hands-on experience in electro-mechanical and hydraulic systems. Ranked among the Top 10 students at CTTI Islamabad and awarded the Punjab Education Authority Scholarship. Strong interest in Electric Vehicles, sustainable energy systems, and modern mechanical technologies. Seeking to pursue a Bachelor's degree.",
+      "A Diploma-qualified mechanical engineering student with practical experience in electro-mechanical and hydraulic systems. Interested in electric vehicles and sustainable technologies, focused on building technical skills through coursework and hands-on workshop projects.",
     skills: [
       {
         title: "Mechanical & Technical",

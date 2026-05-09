@@ -181,11 +181,6 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent" />
                   <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-500 via-teal-400 to-blue-500" />
 
-                  <div className="absolute left-4 top-4 sm:left-6 sm:top-6">
-                    <span className="inline-flex items-center rounded-full border border-amber-400/40 bg-slate-950/60 px-3 py-1 text-xs sm:text-sm text-amber-200 backdrop-blur-sm">
-                      Mechanical Engineering Student
-                    </span>
-                  </div>
 
                   <div className="absolute inset-x-0 bottom-4 sm:bottom-6 flex items-end gap-4 sm:gap-6 px-4 sm:px-6">
                     <div className="relative h-20 w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32 overflow-hidden rounded-full border-4 border-slate-950 bg-slate-800 shadow-xl shrink-0">
@@ -199,15 +194,13 @@ export default function Portfolio() {
                     </div>
 
                     <div className="max-w-3xl pb-1 sm:pb-2">
-                      <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-slate-300/80 mb-2">
-                        Profile
-                      </p>
+
                       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
                         {intro.greetingName}
                       </h2>
-                      <p className="text-sm sm:text-base lg:text-lg text-slate-200/90 leading-relaxed mt-2 max-w-2xl">
-                        {intro.tagline}
-                      </p>
+                        <p className="text-sm sm:text-base lg:text-lg text-amber-300 font-semibold mt-1">
+                          Associate Mechanical Engineer
+                        </p>
                     </div>
                   </div>
                 </div>
